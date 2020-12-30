@@ -1,0 +1,109 @@
+/*google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Global CSS */
+* {
+ margin: 0;
+ padding: 0;
+}
+
+body h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button{
+ font-family: 'Poppins', sans-serif;
+}
+
+html {
+ scroll-behavior: smooth;
+}
+
+body {
+ background-color: #ffffff;
+}
+
+/* header section css */
+
+header{
+ width:100%;
+}
+
+.navbar {
+ background: #84AD5E !important;
+ width: 100%;
+}
+
+.navbar .navbar-brand{
+ font-size: 25px;
+ font-weight: 600;
+ color: #ffffff !important
+}
+
+.navbar .nav-link{
+ font-size: 15px;
+ font-weight: 500;
+ color: #ffffff !important;
+}
+
+/* Registration Form Section CSS */
+
+.register {
+ width: 100% !important;
+ padding: 250px 0 !important;
+ 
+}
+
+.register .card {
+ border-radius: 20px;
+ box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+ background: #ffffff;
+}
+
+.register .card-header h2{
+ color:#2E6DA4;
+ font-size: 28px;
+ font-weight: 600;
+}
+
+.register .card-header h2, p{
+ text-align: center;
+}
+
+.register .card-header p{
+ font-size: 15px;
+}
+
+.register .card form .submit {
+ padding-top: 20px;
+}
+
+.register .card form label{
+ font-weight: 500;
+}
+
+#apply{
+ background:#EBA300;
+ border:none;
+ padding: 10px 10px;
+}
+
+.error {
+ color: red;
+}
+
+
+
+.reg {
+ padding-top: 350px;
+ color:black;
+ font-size: 18px;
+ line-height: 18px;
+ font-weight: 500;
+}
+
