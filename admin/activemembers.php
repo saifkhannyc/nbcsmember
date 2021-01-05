@@ -38,7 +38,6 @@ include 'inc/header.php';
           <th>Mobile Number</th>
           <th>Agency Type</th>
           <th>Agency Name</th>
-          <th>Member Type</th>
           <th>Action</th>
          </tr>
         </thead>
@@ -51,14 +50,13 @@ include 'inc/header.php';
           <th>Mobile Number</th>
           <th>Agency Type</th>
           <th>Agency Name</th>
-          <th>Member Type</th>
           <th>Action</th>
          </tr>
         </tfoot>
         <tbody>
-         <!-- Read all Active Members -->
+         <!-- Read all Active Members in Table -->
          <?php 
-          $query="SELECT member.id as ID, fname,lname, email, mnumber,agencytype.id as agencyId, agencytype,agency,jobtitle,registrationdate,memtype,memstatus FROM member LEFT JOIN agencytype on member.agencytypecode=agencytype.id LEFT JOIN memtype on member.memtypecode=memtype.id LEFT JOIN memstatus on member.memstatuscode=memstatus.id where member.memstatuscode='2' order by member.id";
+          $query="SELECT member.id as ID, fname,lname, email, mnumber,agencytype.id as agencyId, agencytype,agency,jobtitle,registrationdate,memtype,memstatus FROM member LEFT JOIN agencytype on member.agencytypecode=agencytype.id LEFT JOIN memtype on member.memtypecode=memtype.id LEFT JOIN memstatus on member.memstatuscode=memstatus.id where member.memstatuscode=3 order by member.id";
           $result11=mysqli_query($dbc,$query);
           while($row=mysqli_fetch_assoc($result11)){
             $id=$row['ID'];
@@ -95,12 +93,12 @@ include 'inc/header.php';
            <?php } ?>
           </td>
           <td><?php echo $agency;?></td>
-          <td><?php echo $memtype;?></td>
+          <!-- <td><?php echo $memtype;?></td> -->
           <td>
-           <a href="index.php?viewId=<?php echo $id; ?>" type="button" class="btn btn-info" data-toggle="modal"
-            data-target="#myModals">View</a>
-           <a href="" type="button" class="btn btn-primary" data-toggle="modal"
-            data-target="#myModal<?php echo $id; ?>">Edit</a>
+           <a href="index?viewId=<?php echo $id; ?>" type="button" class="btn btn-info" data-toggle="modal"
+            data-target="#myModals"><i class="fas fa-eye" title="View Member Details"></i></a>
+           <a href="activemembers?editId=<?php echo $id; ?>" type="button" class="btn btn-primary" data-toggle="modal"
+            data-target="#myModal<?php echo $id; ?>"><i class="fas fa-edit" title="Edit Member Data"></i></a>
           </td>
           <!-- Modal Code for Edit Active Members -->
           <!-- The Modal -->
@@ -252,15 +250,13 @@ include 'inc/header.php';
               $agency1=$_POST['agency'];
               $jobtitle1=$_POST['jobtitle'];
               echo $lname;
-              $update="UPDATE member SET fname='$fname1',lname='$lname1',email='$email1',mnumber='$mnumber1',agencytypecode='$agencytype1',memtypecode='$memtype1', memstatuscode='$memstatus11',agency='$agency',jobtitle='$jobtitle1', updatedate=Now() WHERE id='$edit_id'";
-              echo $update;
-              // // $result12=mysqli_query($dbc,$update);
-              // if($result12){
-              //   header('Location: activemembers.php');
-              //   echo $fname1;
-              // } else {
-              //   die("Update Member Error".mysqli_error($dbc));
-              // }
+              $update="UPDATE member SET fname='$fname1',lname='$lname1',email='$email1',mnumber='$mnumber1',agencytypecode='$agencytype1',memtypecode='$memtype1', memstatuscode='$memstatus11',agency='$agency1',jobtitle='$jobtitle1', updatedate=Now() WHERE id='$edit_id'";
+               $result12=mysqli_query($dbc,$update);
+               if($result12){
+              header('Location: activemembers.php');
+              } else {
+              die("Update Member Error".mysqli_error($dbc));
+               }
             }
 
               
@@ -277,7 +273,6 @@ include 'inc/header.php';
             </div>
            </div>
           </div>
-
 
 
          </tr>
